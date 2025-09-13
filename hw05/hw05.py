@@ -9,6 +9,8 @@ def hailstone(n):
     1
     """
     "*** YOUR CODE HERE ***"
+
+    '''
     seq = [n]
     while n != 1:
       if n % 2 == 1:
@@ -19,10 +21,18 @@ def hailstone(n):
     
     for _ in range(1000):
       seq.append(1)
-      
+
     hail_gen = iter(seq)
     return hail_gen
-
+    '''
+    while True:
+      yield n
+      if n == 1:
+        continue
+      elif n % 2 == 1:
+        n = 3 * n + 1
+      else:
+        n //= 2
 
 def merge(a, b):
     """Q2:
@@ -37,7 +47,9 @@ def merge(a, b):
     [2, 3, 5, 7, 8, 9, 11, 13, 14, 15]
     """
     "*** YOUR CODE HERE ***"
-
+    a += b
+    sort(a)
+    return iter(a)
 
 def yield_paths(t, value):
     """Q4: Yields all possible paths from the root of t to a node with the label
