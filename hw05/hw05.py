@@ -47,9 +47,20 @@ def merge(a, b):
     [2, 3, 5, 7, 8, 9, 11, 13, 14, 15]
     """
     "*** YOUR CODE HERE ***"
-    a += b
-    sort(a)
-    return iter(a)
+    a_next = next(a)
+    b_next = next(b)
+
+    while True:
+      if a_next < b_next:
+        yield a_next
+        a_next = next(a)
+      elif a_next > b_next:
+        yield b_next
+        b_next = next(b)
+      else:
+        yield a_next
+        a_next = next(a)
+        b_next = next(b)
 
 def yield_paths(t, value):
     """Q4: Yields all possible paths from the root of t to a node with the label
@@ -86,10 +97,10 @@ def yield_paths(t, value):
     [[0, 2], [0, 2, 1, 2]]
     """
     if label(t) == value:
-        yield ____
+        yield [value]
     for b in branches(t):
-        for ____ in ____:
-            yield ____
+        for path in yield_paths(b, value):
+            yield [label(t)] + path
 
 
 
