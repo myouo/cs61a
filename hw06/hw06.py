@@ -157,13 +157,15 @@ def two_list(vals, counts):
     Link(1, Link(1, Link(3, Link(3, Link(2)))))
     """
     "*** YOUR CODE HERE ***"
-    rs = Link.empty
+
+    rs = Link()
     for i in range(len(vals) - 1, 0, -1):
         for _ in range(0, counts[i]):
             a = rs
             rs.rest = a
-            rs.first = a[i]  
+            rs.first = a[i]
     return rs
+
 class Link:
     """A linked list.
 
