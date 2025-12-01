@@ -19,6 +19,6 @@
 
 (define (cddr s) (cdr (cdr s)))
 
-(define (cadr s) (car (cddr s)))
+(define (cadr s) (car (cdr s)))
 
-(define (caddr s) (cadr (cddr s)))
+(define (caddr s) (car (cddr s)))
