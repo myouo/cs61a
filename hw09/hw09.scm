@@ -1,7 +1,21 @@
-(define (curry-cook formals body) 'YOUR-CODE-HERE)
+(define (curry-cook formals body)
+  (if (null? formals)
+      body
+      (let ((first (car formals))
+            (rest  (cdr formals)))
+        (list 'lambda (list first)
+              (curry-cook rest body)))))
+
 
 (define (curry-consume curry args)
-  'YOUR-CODE-HERE)
+  (if (null? args)
+      curry
+      (curry-consume (curry (car args))
+                     (cdr args)
+      )
+  )
+)
+
 
 (define-macro (switch expr options)
   (switch-to-cond (list 'switch expr options)))
